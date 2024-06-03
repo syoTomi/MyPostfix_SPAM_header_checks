@@ -1,5 +1,5 @@
-## Amazonで始まり、encoded_partがエンコードされていない。
+#Amazonで始まり、encoded_partがエンコードされていない。
 /^From: "Amazon(\.co\.jp)?" <[^@]+@(?!amazon\.com|amazon\.co\.jp)/  PREPEND X-Warning: This is a phishing attempt
 
-## えきねっとで始まり、eki-net.comドメインからでない。
-/^From: (=\?UTF-8\?B\?44GI44GN44Gt44Gj44Go\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go44K144Od44O844OI44K744Oz44K/\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go77yISlLmnbHml6XmnKzvvIk=\?=) <[^@]+@(?!eki-net\.com)/  PREPEND X-Warning: This is a phishing attempt
+#えきねっとで始まり、eki-net.comドメインからでない。
+/^From: (=\?UTF-8\?B\?44GI44GN44Gt44Gj44Go\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go44K144Od44O844OI44K744Oz44K\/\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go77yISlLmnbHml6XmnKzvvIk=\?=) <[^@]+@(?!eki-net\.com)/  PREPEND X-Warning: This is a phishing attempt
