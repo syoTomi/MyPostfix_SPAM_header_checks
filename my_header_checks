@@ -1,5 +1,54 @@
-#Amazonで始まり、encoded_partがエンコードされていない。
-/^From: "Amazon(\.co\.jp)?" <[^@]+@(?!amazon\.com|amazon\.co\.jp)/  PREPEND X-Warning: This is a phishing attempt
-
+### こちらは厳密にメールアドレス部分も考慮に入れる
+#Amazonで始まり、amazon.com/amazon.co.jpからでない
+/^(?i)From: "Amazon(\.co\.jp)?" <[^@]+@(?!amazon\.com|amazon\.co\.jp)/  PREPEND X-Warning: This is a phishing attempt
 #えきねっとで始まり、eki-net.comドメインからでない。
-/^From: (=\?UTF-8\?B\?44GI44GN44Gt44Gj44Go\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go44K144Od44O844OI44K744Oz44K\/\?=|=\?utf-8\?B\?44GI44GN44Gt44Gj44Go77yISlLmnbHml6XmnKzvvIk=\?=) <[^@]+@(?!eki-net\.com)/  PREPEND X-Warning: This is a phishing attempt
+/^(?i)From: =\?UTF-8\?B\?44GI44GN44Gt44Gj44Go <[^@]+@(?!eki-net\.com)/  PREPEND X-Warning: This is a phishing attempt
+
+### 雑に先頭部分で判断して全部スパムとする
+# 東京電力エナジーパ ートナ ー を含む
+/^(?i)From: =\?utf-8\?b\?5p2x5Lqs6Zu75Yqb44Ko44OK44K444O844ORIOODvOODiOODiiDjg7w=\?=    </  PREPEND X-Warning: This is a phishing attempt
+# 三井住友銀行 を含む
+/^(?i)From: =\?utf-8\?B\?5LiJ5LqV5L2P5Y\+L6YqA6KGM\?= </  PREPEND X-Warning: This is a phishing attempt
+# 株式会社IVRy事務局 を含む
+/^(?i)From: =\?ISO-2022-JP\?B\?GyRCM3Q8MDJxPFIbKEJJVlJ5GyRCO3ZMMzZJGyhC\?= </  PREPEND X-Warning: This is a phishing attempt
+# エポスカード を含む
+/^(?i)From: =\?utf-8\?B\?44Ko44Od44K544Kr44O844OJ\?= </  PREPEND X-Warning: This is a phishing attempt
+# えきねっと を含む
+/^(?i)From: =\?UTF-8\?B\?44GI44GN44Gt44Gj44Go\?= </  PREPEND X-Warning: This is a phishing attempt
+# イオンフィナンシャルサービス株式会社 を含む
+/^(?i)From: =\?utf-8\?B\?44Kk44Kq44Oz44OV44Kj44OK44Oz44K344Oj44Or44K144O844OT44K55qCq5byP5Lya56S\+\?= </  PREPEND X-Warning: This is a phishing attempt
+# イオンクレジットサービス株式会社 を含む
+/^(?i)From: =\?utf-8\?B\?44Kk44Kq44Oz44Kv44Os44K444OD44OI44K144O844OT44K55qCq5byP5Lya56S\+\?= </  PREPEND X-Warning: This is a phishing attempt
+# Worktank を含む
+/^(?i)From: =\?ISO-2022-JP\?B\?V29ya3Rhbms=\?=</  PREPEND X-Warning: This is a phishing attempt
+# 東京電力エナジーパートナー を含む
+/^(?i)From: =\?UTF-8\?B\?5p2x5Lqs6Zu75Yqb44Ko44OK44K444O844OR44O844OI44OK44O8\?= </  PREPEND X-Warning: This is a phishing attempt
+# MasterCardカード を含む
+/^(?i)From: =\?utf-8\?b\?TWFzdGVyQ2FyZOOCq\+ODvOODiQ==\?= </  PREPEND X-Warning: This is a phishing attempt
+# 三井住友カード を含む
+/^(?i)From: =\?utf-8\?b\?5LiJ5LqV5L2P5Y\+L44Kr44O844OJ\?= </  PREPEND X-Warning: This is a phishing attempt
+# 自動メール送信 を含む
+/^(?i)From: =\?utf-8\?B\?6Ieq5YuV44Oh44O844Or6YCB5L\+h\?= </  PREPEND X-Warning: This is a phishing attempt
+# えきねっと を含む
+/^(?i)From: =\?utf-8\?B\?44GI44GN44Gt44Gj44Go\?= </  PREPEND X-Warning: This is a phishing attempt
+# イオンカード を含む
+/^(?i)From: =\?UTF-8\?B\?44Kk44Kq44Oz44Kr44O844OJ\?= </  PREPEND X-Warning: This is a phishing attempt
+# エポスカード を含む
+/^(?i)From: =\?utf-8\?b\?44Ko44Od44K544Kr44O844OJ\?= </  PREPEND X-Warning: This is a phishing attempt
+# マスター カード を含む
+/^(?i)From: =\?utf-8\?b\?44Oe44K544K\/44O8IOOCq\+ODvOODiQ==\?= </  PREPEND X-Warning: This is a phishing attempt
+# Prime会員 を含む
+/^(?i)From: =\?utf-8\?B\?UHJpbWXkvJrlk6E=\?= </  PREPEND X-Warning: This is a phishing attempt
+# 東京電力エナジーパートナー を含む
+/^(?i)From: =\?utf-8\?b\?5p2x5Lqs6Zu75Yqb44Ko44OK44K444O844OR44O844OI44OK44O8\?=        </  PREPEND X-Warning: This is a phishing attempt
+# ナイポート電子商取引 を含む
+/^(?i)From: =\?utf-8\?b\?44OK44Kk44Od44O844OI6Zu75a2Q5ZWG5Y\+W5byV\?=   </  PREPEND X-Warning: This is a phishing attempt
+# 株式会社イオン銀行 を含む
+/^(?i)From: =\?utf-8\?B\?5qCq5byP5Lya56S\+44Kk44Kq44Oz6YqA6KGM\?= </  PREPEND X-Warning: This is a phishing attempt
+# 自動メール通知 を含む
+/^(?i)From: =\?utf-8\?B\?6Ieq5YuV44Oh44O844Or6YCa55\+l\?= </  PREPEND X-Warning: This is a phishing attempt
+# ＥＴＣ利用照会サービス を含む
+/^(?i)From: =\?utf-8\?B\?77yl77y077yj5Yip55So54Wn5Lya44K144O844OT44K5\?= </  PREPEND X-Warning: This is a phishing attempt
+# ＥＴＣマイレージサービス事務局 を含む
+/^(?i)From: =\?utf-8\?B\?77yl77y077yj44Oe44Kk44Os44O844K444K144O844OT44K55LqL5YuZ5bGA\?= </  PREPEND X-Warning: This is a phishing attempt
+
